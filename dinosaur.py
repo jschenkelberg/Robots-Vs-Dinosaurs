@@ -1,22 +1,18 @@
-import Robot
+from robot import Robot
 
 
 class Dinosaur:
 
-    def __init__(self):
-        self.type = ""
+    def __init__(self, type):
+        self.type = type
         self.energy = 100
         self.attack_power = 30
         self.health = 100
 
-    def set_dinosaur_type(self):
-        self.type = input("What type of dinosaur?")
-        print("Dinosaur Type: ", self.type)
-
     def attack_robot(self, robot):
-        dinosaur_attack = robot.health - dinosaur.attack_power
-        if robot.health > 0:
-            print({dinosaur.type}, "attacks", {robot.name}, ".", {robot.name}, "has", {robot.health}, "left.")
+        dinosaur_attack = Robot.health - Dinosaur.attack_power
+        if Robot.health > 0:
+            print({Dinosaur.type}, "attacks", {Robot.name}, ".", {Robot.name}, "has", {Robot.health}, "left.")
         else:
-            print({dinosaur.type}, "has eliminated", {robot.name})
-
+            print({Dinosaur.type}, "has eliminated", {Robot.name})
+        pass
