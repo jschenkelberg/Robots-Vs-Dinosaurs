@@ -1,5 +1,5 @@
 from weapon import Weapon
-
+from dinosaur import Dinosaur
 
 class Robot:
 
@@ -13,5 +13,9 @@ class Robot:
         self.name = input("Enter Robot Name:")
         print("Robot name: ", self.name)
 
-
-
+    def attack_dinosaur(self, dinosaur):
+        robot_attack = robot.attack_power - dinosaur.health
+        if dinosaur.health > 0:
+            print({robot.name}, "attacks", {dinosaur.name}, ".", {dinosaur.name},"has",{dinosuar.health},"left.")
+        else:
+            print({robot.name}, "has eliminated",{dinosaur.name})

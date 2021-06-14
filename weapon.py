@@ -1,3 +1,6 @@
+import robot
+
+
 class Weapon:
 
     def __init__(self):
@@ -6,5 +9,9 @@ class Weapon:
 
     def equip_weapon(self):
         self.weapon = input("Do you want to equip a weapon? Y/N")
-        self.attack_power = 20
+        if self.weapon: 'Y'
+        equipped_weapon = self.attack_power + robot.power_level
         print("Ray Gun is equipped.")
+        return equipped_weapon
+
+
