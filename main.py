@@ -7,9 +7,6 @@ from fleet import Fleet
 
 
 if __name__ == '__main__':
-    print("hi")
+    battlefield = Battlefield()
+    battlefield.run_game()
 
-herd = Herd()
-fleet = Fleet()
-print(herd.dinosaurs[0].type)
-print(fleet.robots[0].name)

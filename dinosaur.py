@@ -1,4 +1,3 @@
-from robot import Robot
 
 
 class Dinosaur:
@@ -10,9 +9,9 @@ class Dinosaur:
         self.health = 100
 
     def attack_robot(self, robot):
-        dinosaur_attack = Robot.health - Dinosaur.attack_power
-        if Robot.health > 0:
-            print({Dinosaur.type}, "attacks", {Robot.name}, ".", {Robot.name}, "has", {Robot.health}, "left.")
+        robot.health -= self.attack_power
+        if robot.health > 0:
+            print({self.type}, "attacks", {robot.name}, ".", {robot.name}, "has", {robot.health}, "left.")
         else:
-            print({Dinosaur.type}, "has eliminated", {Robot.name})
-        pass
+            print(f"{self.type} has eliminated {robot.name}.")
+
