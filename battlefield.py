@@ -23,6 +23,7 @@ class Battlefield:
         # Pick a Robot
         # Pick dinosaur to attack
         #
+        self.display_winners()
 
 
 
@@ -34,45 +35,59 @@ class Battlefield:
         print("Welcome to Robots vs. Dinosaurs!")
 
     def battle(self):
-        battle_start = input("Are your ready to start? (y/n)")
-        if battle_start.lower() == "y":
-            # print(f"{self.fleet.robots[0].name} attacks {self.herd.dinosaurs[0].type}")
-            self.fleet.robots[0].attack(self.herd.dinosaurs[0])
-            print(f"{self.herd.dinosaurs[0].type} makes a counter attack!")
-            self.herd.dinosaurs[0].attack(self.fleet.robots[0])
-            attack_again = input("Would you like the robot to attack again? (y/n)")
-            if self.herd.dinosaurs[0].health > 0:
-                print(attack_again)
-            if attack_again.lower() == "y":
+        while self.herd.dinosaurs[0].health + self.herd.dinosaurs[1].health + self.herd.dinosaurs[2].health > 0 and self.fleet.robots[0].health + self.fleet.robots[1].health + self.fleet.robots[2].health > 0:
+            battle_start = input("Are your ready to start/keep fighting? (y/n)")
+            if battle_start.lower() == "y":
                 self.fleet.robots[0].attack(self.herd.dinosaurs[0])
-            elif attack_again.lower() == "n":
-                print(f"{self.fleet.robots[0].name} has decided not to fight {self.herd.dinosaurs[0].type}. Robots have retreated. Game Over.")
-            print(f"Next Fight! {self.fleet.robots[1].name} vs. {self.herd.dinosaurs[1].type}")
-            self.fleet.robots[1].attack(self.herd.dinosaurs[1])
-            print(f"{self.herd.dinosaurs[1].type}'s turn")
-            self.herd.dinosaurs[1].attack(self.fleet.robots[1])
-            attack_again = input("Would you like to attack again? (y/n)")
-            if self.herd.dinosaurs[1].health > 0:
-                print(attack_again)
-            if attack_again.lower() == "y":
-                self.fleet.robots[1].attack(self.herd.dinosaurs[0])
-            elif attack_again.lower() == "n":
-                print(f"{self.fleet.robots[1].name} has decided not to fight {self.herd.dinosaurs[1].type}. Robots have retreated. Game Over.")
-            print(f"Next Fight! {self.fleet.robots[2].name} vs. {self.herd.dinosaurs[2].type}")
-            self.fleet.robots[2].attack(self.herd.dinosaurs[2])
-            print(f"{self.herd.dinosaurs[2].type}'s turn")
-            self.herd.dinosaurs[2].attack(self.fleet.robots[2])
-            attack_again = input("Would you like to attack again? (y/n)")
-            if self.herd.dinosaurs[2].health > 0:
-                print(attack_again)
-            if attack_again.lower() == "y":
+                print(f"{self.herd.dinosaurs[0].type} makes a counter attack!")
+                self.herd.dinosaurs[0].attack(self.fleet.robots[0])
+                attack_again = input("Would you like the robot to attack again? (y/n)")
+                if self.herd.dinosaurs[0].health > 0:
+                    print(attack_again)
+                if attack_again.lower() == "y":
+                    self.fleet.robots[0].attack(self.herd.dinosaurs[0])
+                elif attack_again.lower() == "n":
+                    self.herd.dinosaurs[0].attack(self.fleet.robots[0])
+                    print(attack_again)
+                    # print(f"{self.fleet.robots[0].name} has decided not to fight {self.herd.dinosaurs[0].type}. Robots have retreated.")
+                print(f"###Next Fight!### {self.fleet.robots[1].name} vs. {self.herd.dinosaurs[1].type}")
+                self.fleet.robots[1].attack(self.herd.dinosaurs[1])
+                print(f"{self.herd.dinosaurs[1].type}'s turn")
+                self.herd.dinosaurs[1].attack(self.fleet.robots[1])
+                attack_again = input("Would you like to attack again? (y/n)")
+                if self.herd.dinosaurs[1].health > 0:
+                    print(attack_again)
+                if attack_again.lower() == "y":
+                    self.fleet.robots[1].attack(self.herd.dinosaurs[1])
+                elif attack_again.lower() == "n":
+                    self.herd.dinosaurs[1].attack(self.fleet.robots[1])
+                    print(attack_again)
+                    # print(f"{self.fleet.robots[1].name} has decided not to fight {self.herd.dinosaurs[1].type}. Robots have retreated.")
+                print(f"####Next Fight!#### {self.fleet.robots[2].name} vs. {self.herd.dinosaurs[2].type}")
                 self.fleet.robots[2].attack(self.herd.dinosaurs[2])
-            elif attack_again.lower() == "n":
-                print(f"{self.fleet.robots[2].name} has decided not to fight {self.herd.dinosaurs[2].type}. Robots have retreated! Game Over.")
-            print ("Robots emerge victorious again!!!")
-        elif battle_start.lower() == "n":
-            print("Come back when you are ready.")
-
+                print(f"{self.herd.dinosaurs[2].type}'s turn")
+                self.herd.dinosaurs[2].attack(self.fleet.robots[2])
+                attack_again = input("Would you like to attack again? (y/n)")
+                if self.herd.dinosaurs[2].health > 0:
+                    print(attack_again)
+                if attack_again.lower() == "y":
+                    self.fleet.robots[2].attack(self.herd.dinosaurs[2])
+                elif attack_again.lower() == "n":
+                    self.herd.dinosaurs[2].attack(self.fleet.robots[2])
+                    print(attack_again)
+                    # print(f"{self.fleet.robots[2].name} has decided not to fight {self.herd.dinosaurs[2].type}. Robots have retreated!")
+            if self.herd.dinosaurs[0].health + self.herd.dinosaurs[1].health + self.herd.dinosaurs[2].health <= 0:
+                print("Robots have killed all the dinosaurs!!!")
+            elif self.fleet.robots[0].health + self.fleet.robots[1].health + self.fleet.robots[2].health <= 0:
+                print("Dinosaurs have defeated the Robots!")
+            elif self.herd.dinosaurs[0].health + self.herd.dinosaurs[1].health + self.herd.dinosaurs[2].health <= 0 or self.fleet.robots[0].health + self.fleet.robots[1].health + self.fleet.robots[2].health <= 0:
+                break
+            elif battle_start.lower() == "n":
+                print("Come back when you are ready.")
+        # if self.herd.dinosaurs[0].health + self.herd.dinosaurs[1].health + self.herd.dinosaurs[2].health <= 0:
+        #     print("Robots have killed all the dinosaurs!!!")
+        # elif self.fleet.robots[0].health + self.fleet.robots[1].health + self.fleet.robots[2].health <= 0:
+        #     print("Dinosaurs have defeated the Robots!")
 
     # def dinosaur_fighter_selection(self):
     #     battle_start = input("Are your ready to pick your fighters? (y/n)")
@@ -170,4 +185,18 @@ class Battlefield:
 
 
     def display_winners(self):
-        pass
+        print("Fighters final health results")
+        print(self.fleet.robots[0].name)
+        print(self.fleet.robots[0].health)
+        print(self.fleet.robots[1].name)
+        print(self.fleet.robots[1].health)
+        print(self.fleet.robots[2].name)
+        print(self.fleet.robots[2].health)
+        print(self.herd.dinosaurs[0].type)
+        print(self.herd.dinosaurs[0].health)
+        print(self.herd.dinosaurs[1].type)
+        print(self.herd.dinosaurs[1].health)
+        print(self.herd.dinosaurs[2].type)
+        print(self.herd.dinosaurs[2].health)
+
+

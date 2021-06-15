@@ -15,6 +15,6 @@ class Robot:
         if dinosaur.health > 0:
             print(f"{self.name} attacks {dinosaur.type}. {dinosaur.type} has {dinosaur.health} health left.")
         else:
-            print(f"{self.name} has eliminated {dinosaur.type}")
+            print(f"{self.name} has eliminated {dinosaur.type}!")
 
 
